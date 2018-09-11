@@ -1,0 +1,176 @@
+.steps{
+  background: $bg-main-grey;
+  .step-header {
+    border-bottom: 2px solid #4b75a4;
+    padding: 0 30px 5px 30px;
+    display: inline-block;
+    h1{
+      line-height: 0.8;
+      color: #5b5b5b;
+      font-weight: normal;
+    }
+    h3{
+      color: $bg-main-blue;
+      margin: 0;
+    }
+  }
+  .step{
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #ACACAC;
+    border-radius: 3px;
+    .step-info{
+      position: relative;
+      -moz-box-sizing: border-box;
+      display: inline-block;
+      width: 55%;
+    }
+    &:nth-child(even) {
+      .step-image{
+        float: left;
+      }
+      .step-info{
+        text-align: left;
+      }
+      .step-article{
+        left: 270px;
+      }
+      .hexagon{
+        left: 270px;
+      }
+    }
+    &:nth-child(odd) {
+      .step-image{
+        float: right;
+      }
+      .step-info{
+        text-align: right;
+      }
+      .step-article{
+        right: 270px;
+      }
+      .hexagon{
+        right: 270px;
+      }
+    }
+    .step-image{
+      width: 317px;
+      display: inline-block;
+      border: 2px solid #4b75a4;
+      img{
+        max-width: 100%;
+      }
+      .grid{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      .hexagon{
+        position: absolute;
+        top: -2px;
+      }
+      .step-article{
+        position: absolute;
+        width: 102px;
+        top: 15px;
+        text-align: center;
+        z-index: 3;
+        .step-number{
+          color: #3d4d60;
+          font-size: 300%;
+          font-weight: normal;
+          margin-top: 0;
+          margin-bottom: -15px;
+        }
+        .step-name{
+          color: #3d4d60;
+          font-size: 130%;
+          font-weight: normal;
+          margin: 0;
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .steps{
+    .step {
+      overflow: inherit;
+      background: $bg-main-grey;
+      box-shadow: none;
+      &:nth-child(odd), &:nth-child(even) {
+        .step-image{
+          float: left;
+          width: 262px;
+          .step-article{
+            position: absolute;
+            width: 77px;
+            top: -40px;
+            text-align: center;
+            z-index: 3;
+            left: 204px;
+            right: inherit;
+            .step-number{
+              font-size: 40px;
+              margin-bottom: -25px;
+            }
+            .step-name{
+              font-size: 20px;
+            }
+          }
+        }
+        .step-info{
+          text-align: left;
+        }
+      }
+      .hexagon_small {
+        position: absolute;
+        top: -34px;
+        left: 204px;
+        display: block;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .steps{
+    .step {
+      &:nth-child(odd), &:nth-child(even){
+        .step-image{
+          float: inherit;
+        }
+      }
+      &:nth-child(odd){
+        .step-image{
+          .hexagon_small, .step-article {
+            left: -56px;
+          }
+        }
+        .step-info{
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .steps{
+    .step {
+      .step-info{
+        width: 75%;
+      }
+      &:nth-child(odd), &:nth-child(even){
+        .step-image{
+          .hexagon_small, .step-article {
+            left: 90px;
+          }
+        }
+      }
+    }
+  }
+}
