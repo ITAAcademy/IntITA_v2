@@ -64996,8 +64996,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     console.log(error);
                 }
             });
-
-            // this.submitted = true;
         },
         register: function register() {
             var that = this;
@@ -65012,8 +65010,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     console.log(error);
                 }
             });
-
-            // this.submitted = true;
         }
     }
 });
