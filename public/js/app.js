@@ -20291,8 +20291,8 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(76);
-__webpack_require__(229);
-module.exports = __webpack_require__(230);
+__webpack_require__(227);
+module.exports = __webpack_require__(228);
 
 
 /***/ }),
@@ -20322,8 +20322,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_bootstrap_vue__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(219));
-Vue.component('auth-form', __webpack_require__(222));
+Vue.component('example-component', __webpack_require__(217));
+Vue.component('auth-form', __webpack_require__(220));
 
 $.ajaxSetup({
     headers: {
@@ -64383,17 +64383,15 @@ function removeBVPO(el) {
 });
 
 /***/ }),
-/* 217 */,
-/* 218 */,
-/* 219 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(74)
 /* script */
-var __vue_script__ = __webpack_require__(220)
+var __vue_script__ = __webpack_require__(218)
 /* template */
-var __vue_template__ = __webpack_require__(221)
+var __vue_template__ = __webpack_require__(219)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64432,7 +64430,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 220 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64461,7 +64459,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 221 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64504,19 +64502,19 @@ if (false) {
 }
 
 /***/ }),
-/* 222 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(223)
+  __webpack_require__(221)
 }
 var normalizeComponent = __webpack_require__(74)
 /* script */
-var __vue_script__ = __webpack_require__(227)
+var __vue_script__ = __webpack_require__(225)
 /* template */
-var __vue_template__ = __webpack_require__(228)
+var __vue_template__ = __webpack_require__(226)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64555,17 +64553,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 223 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(224);
+var content = __webpack_require__(222);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(225)("63278c89", content, false, {});
+var update = __webpack_require__(223)("63278c89", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -64581,7 +64579,7 @@ if(false) {
 }
 
 /***/ }),
-/* 224 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(16)(false);
@@ -64595,7 +64593,7 @@ exports.push([module.i, "\n.btn-auth-form[data-v-1e2f39f7] {\n    width: 195px;\
 
 
 /***/ }),
-/* 225 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -64614,7 +64612,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(226)
+var listToStyles = __webpack_require__(224)
 
 /*
 type StyleObject = {
@@ -64823,7 +64821,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 226 */
+/* 224 */
 /***/ (function(module, exports) {
 
 /**
@@ -64856,7 +64854,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 227 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64957,49 +64955,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['login_url', 'register_url', 'id', 'signIn', 'ph_email', 'ph_password', 'login_button', 'registration_button', 'forgot_pass_title', 'registration_title', 'login_title', 'network_title', 'full_registration_title', 'facebook_svg', 'google_svg', 'in_svg', 'twitter_svg'],
+    props: ['modal_mode', 'login_url', 'register_url', 'id', 'signIn', 'ph_email', 'ph_password', 'login_button', 'registration_button', 'forgot_pass_title', 'registration_title', 'login_title', 'network_title', 'full_registration_title', 'facebook_svg', 'google_svg', 'in_svg', 'twitter_svg'],
     data: function data() {
         return {
             data: {},
-            signInMode: true
+            signInMode: true,
+            offlineForm: false,
+            errors: {}
         };
     },
     mounted: function mounted() {
         if (!this.signIn) this.signInMode = false;
     },
 
-    // computed: {
-    //     fullName: function () {
-    //         return this.data.educform;
-    //     }
-    // },
+    watch: {
+        offlineForm: function offlineForm(newValue, oldValue) {
+            if (this.offlineForm) {
+                this.data.educform = 3;
+                this.data.education_shift = 3;
+            } else {
+                this.data.educform = 1;
+            }
+        }
+    },
     methods: {
         toggleAuthMode: function toggleAuthMode() {
             this.signInMode = !this.signInMode;
         },
         login: function login() {
             var that = this;
-            $.ajax({
-                type: "post",
-                url: that.login_url,
-                data: that.data,
-                success: function success(response) {
-                    console.log(response);
-                },
-                error: function error(_error) {
-                    console.log(_error);
+            axios.post(that.login_url, that.data).then(function (response) {
+                response.data.url == 'current' ? window.location.reload() : window.location.href = response.data.url;
+            }).catch(function (error) {
+                if (error.response.status === 422) {
+                    that.errors = error.response.data.errors;
+                } else {
+                    alert('Виникла помилка');
+                    console.log(error);
                 }
             });
 
@@ -65007,15 +65001,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         register: function register() {
             var that = this;
-            $.ajax({
-                type: "post",
-                url: that.register_url,
-                data: that.data,
-                success: function success(response) {
-                    console.log(response);
-                },
-                error: function error(_error2) {
-                    console.log(_error2);
+            console.log(that.data);
+            axios.post(that.register_url, that.data).then(function (response) {
+                window.location.href = "confirmation";
+            }).catch(function (error) {
+                if (error.response.status === 422) {
+                    that.errors = error.response.data.errors;
+                } else {
+                    alert('Виникла помилка');
+                    console.log(error);
                 }
             });
 
@@ -65025,7 +65019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 228 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65035,7 +65029,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade",
+      class: { "modal fade": _vm.modal_mode },
       attrs: {
         id: _vm.id,
         tabindex: "-1",
@@ -65047,7 +65041,31 @@ var render = function() {
     [
       _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
         _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "modal-header border-bottom-0" }, [
+            _vm.modal_mode
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "color-main-blue",
+                        attrs: { "aria-hidden": "true" }
+                      },
+                      [_vm._v("×")]
+                    )
+                  ]
+                )
+              : _vm._e()
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body p-4" }, [
             _c("div", [
@@ -65063,7 +65081,6 @@ var render = function() {
                   ],
                   staticClass: "form-control intita-input",
                   attrs: {
-                    id: "email",
                     type: "email",
                     placeholder: _vm.ph_email,
                     name: "email",
@@ -65079,7 +65096,17 @@ var render = function() {
                       _vm.$set(_vm.data, "email", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.email
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.email[0]) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -65094,7 +65121,6 @@ var render = function() {
                   ],
                   staticClass: "form-control intita-input",
                   attrs: {
-                    id: "password",
                     type: "password",
                     placeholder: _vm.ph_password,
                     name: "password",
@@ -65109,7 +65135,17 @@ var render = function() {
                       _vm.$set(_vm.data, "password", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.password
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.password[0]) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c(
@@ -65125,7 +65161,7 @@ var render = function() {
                   ]
                 },
                 [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group mb-0 text-center" }, [
                     _c(
@@ -65212,7 +65248,64 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _c("div", [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-check form-check-inline" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.offlineForm,
+                                expression: "offlineForm"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: { type: "checkbox", id: "offlineCheckbox" },
+                            domProps: {
+                              checked: Array.isArray(_vm.offlineForm)
+                                ? _vm._i(_vm.offlineForm, null) > -1
+                                : _vm.offlineForm
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.offlineForm,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.offlineForm = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.offlineForm = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.offlineForm = $$c
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "offlineCheckbox" }
+                            },
+                            [_vm._v("офлайн")]
+                          )
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group mb-0 text-center" }, [
@@ -65292,34 +65385,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header border-bottom-0" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [
-          _c(
-            "span",
-            {
-              staticClass: "color-main-blue",
-              attrs: { "aria-hidden": "true" }
-            },
-            [_vm._v("×")]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex justify-content-between" }, [
       _c("div", [
         _vm._v(
@@ -65338,35 +65403,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "form-check form-check-inline" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox", id: "onlineCheckbox", disabled: "" }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "onlineCheckbox" } },
-          [_vm._v("онлайн")]
-        )
-      ]),
+    return _c("div", { staticClass: "form-check form-check-inline" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { type: "checkbox", id: "onlineCheckbox", disabled: "" }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-check form-check-inline" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox", id: "offlineCheckbox", value: "3" }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "form-check-label",
-            attrs: { for: "offlineCheckbox" }
-          },
-          [_vm._v("офлайн")]
-        )
-      ])
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "onlineCheckbox" } },
+        [_vm._v("онлайн")]
+      )
     ])
   }
 ]
@@ -65380,13 +65427,13 @@ if (false) {
 }
 
 /***/ }),
-/* 229 */
+/* 227 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 230 */
+/* 228 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -409,14 +409,6 @@ table.b-table > tbody > tr.b-table-details > td {
 }
 
 @font-face {
-  font-family: 'MyriadPro2';
-  src: url("/fonts/myriadpro2/regular.eot");
-  src: url("/fonts/myriadpro2/regular.eot?#iefix") format("embedded-opentype"), url("/fonts/myriadpro2/regular.woff") format("woff"), url("/fonts/myriadpro2/regular.ttf") format("truetype"), url("/fonts/myriadpro2/regular.eot#helveticaneuecyrbold") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "SegoeUILight";
   src: url("/fonts/ptsans/SegoeUILight.eot");
   src: url("/fonts/ptsans/SegoeUILight.eot?#iefix") format("embedded-opentype"), url("/fonts/SegoeUILight.woff") format("woff"), url("/fonts/SegoeUILight.ttf") format("truetype");
@@ -16133,7 +16125,6 @@ header .header-auth .language-row a:first-child {
 }
 
 footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: white;
@@ -16279,6 +16270,21 @@ button:focus {
 
 p {
   color: #666666;
+}
+
+.infoblock {
+  margin: 0 auto;
+  margin-bottom: 40vh;
+  width: 540px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  padding: 20px 20px 20px 20px;
+  text-align: center;
+}
+
+.infoblock h2 {
+  text-align: center;
+  color: #4b75a4;
 }
 
 .intita-input {

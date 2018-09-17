@@ -33,4 +33,21 @@ class Translate
         $locale_name = $session_locale ? $session_locale : 'ua';
         return $locale_name.'_'.$name;
     }
+
+    /**
+     *
+     * @return array
+     */
+    public static function validationMsg()
+    {
+
+        return [
+            'required' => self::value('error', '0268'),
+            'email' => self::value('error', '0271'),
+            'confirmed' => self::value('error', '0269'),
+            'unique' => self::value('error', '0272'),
+            'auth' => self::value('error', '0272'),
+            'name' => self::value('error', '0416'),
+        ];
+    }
 }

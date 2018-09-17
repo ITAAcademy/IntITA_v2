@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-md flex-column flex-md-row bd-navbar pl-5 pr-5">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{url('')}}">
         <img src="{{ asset('images/' . t::localeImage('logo_big.svg'))}}" alt="Logo">
     </a>
 
@@ -11,7 +11,7 @@
         </span>
         </button>
         <div class="navbar-collapse collapse" id="hamburger" style="">
-            <a class="navbar-brand d-md-none" href="#">
+            <a class="navbar-brand d-md-none" href="{{url('')}}">
                 <img src="{{ asset('images/' . t::localeImage('logo_big.svg'))}}" alt="Logo">
             </a>
             <div class="language-row d-md-none">
@@ -60,6 +60,7 @@
     <!-- Modal -->
     <auth-form
     :id="'modalAuth'"
+    :modal_mode="true"
     :login_url = "'{!! route('login') !!}'"
     :register_url = "'{!! route('register') !!}'"
     :ph_email="'{!! t::value('regform', '0014') !!}'"

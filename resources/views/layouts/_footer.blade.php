@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="right-block align-top text-center">
-            <i class="fas fa-chevron-circle-up fa-3x"></i>
+            <img src="{{ asset('images/up.svg')}}" alt="Logo">
         </div>
     </div>
 </footer>

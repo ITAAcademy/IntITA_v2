@@ -1,0 +1,191 @@
+.steps {
+  background: #f3f3f3;
+}
+
+.steps .step-header {
+  border-bottom: 2px solid #4b75a4;
+  padding: 0 30px 5px 30px;
+  display: inline-block;
+}
+
+.steps .step-header h1 {
+  line-height: 0.8;
+  color: #5b5b5b;
+  font-weight: normal;
+}
+
+.steps .step-header h3 {
+  color: #4b75a4;
+  margin: 0;
+}
+
+.steps .step {
+  overflow: hidden;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 5px #ACACAC;
+          box-shadow: 0 0 5px #ACACAC;
+  border-radius: 3px;
+}
+
+.steps .step .step-info {
+  position: relative;
+  -moz-box-sizing: border-box;
+  display: inline-block;
+  width: 55%;
+}
+
+.steps .step:nth-child(even) .step-image {
+  float: left;
+}
+
+.steps .step:nth-child(even) .step-info {
+  text-align: left;
+}
+
+.steps .step:nth-child(even) .step-article {
+  left: 270px;
+}
+
+.steps .step:nth-child(even) .hexagon {
+  left: 270px;
+}
+
+.steps .step:nth-child(odd) .step-image {
+  float: right;
+}
+
+.steps .step:nth-child(odd) .step-info {
+  text-align: right;
+}
+
+.steps .step:nth-child(odd) .step-article {
+  right: 270px;
+}
+
+.steps .step:nth-child(odd) .hexagon {
+  right: 270px;
+}
+
+.steps .step .step-image {
+  width: 317px;
+  display: inline-block;
+  border: 2px solid #4b75a4;
+}
+
+.steps .step .step-image img {
+  max-width: 100%;
+}
+
+.steps .step .step-image .grid {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.steps .step .step-image .hexagon {
+  position: absolute;
+  top: -2px;
+}
+
+.steps .step .step-image .step-article {
+  position: absolute;
+  width: 102px;
+  top: 15px;
+  text-align: center;
+  z-index: 3;
+}
+
+.steps .step .step-image .step-article .step-number {
+  color: #3d4d60;
+  font-size: 300%;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: -15px;
+}
+
+.steps .step .step-image .step-article .step-name {
+  color: #3d4d60;
+  font-size: 130%;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .steps .step {
+    overflow: inherit;
+    background: #f3f3f3;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+
+  .steps .step:nth-child(odd) .step-image,
+  .steps .step:nth-child(even) .step-image {
+    float: left;
+    width: 262px;
+  }
+
+  .steps .step:nth-child(odd) .step-image .step-article,
+  .steps .step:nth-child(even) .step-image .step-article {
+    position: absolute;
+    width: 77px;
+    top: -40px;
+    text-align: center;
+    z-index: 3;
+    left: 204px;
+    right: inherit;
+  }
+
+  .steps .step:nth-child(odd) .step-image .step-article .step-number,
+  .steps .step:nth-child(even) .step-image .step-article .step-number {
+    font-size: 40px;
+    margin-bottom: -25px;
+  }
+
+  .steps .step:nth-child(odd) .step-image .step-article .step-name,
+  .steps .step:nth-child(even) .step-image .step-article .step-name {
+    font-size: 20px;
+  }
+
+  .steps .step:nth-child(odd) .step-info,
+  .steps .step:nth-child(even) .step-info {
+    text-align: left;
+  }
+
+  .steps .step .hexagon_small {
+    position: absolute;
+    top: -34px;
+    left: 204px;
+    display: block;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .steps .step:nth-child(odd) .step-image,
+  .steps .step:nth-child(even) .step-image {
+    float: inherit;
+  }
+
+  .steps .step:nth-child(odd) .step-image .hexagon_small,
+  .steps .step:nth-child(odd) .step-image .step-article {
+    left: -56px;
+  }
+
+  .steps .step:nth-child(odd) .step-info {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575px) {
+  .steps .step .step-info {
+    width: 75%;
+  }
+
+  .steps .step:nth-child(odd) .step-image .hexagon_small,
+  .steps .step:nth-child(odd) .step-image .step-article,
+  .steps .step:nth-child(even) .step-image .hexagon_small,
+  .steps .step:nth-child(even) .step-image .step-article {
+    left: 90px;
+  }
+}
+

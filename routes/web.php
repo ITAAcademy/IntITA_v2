@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes(['verify' => true]);
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');
+
+Route::get('/', 'HomeController@index');
+Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
+
+Route::get('confirmation', 'Auth\RegisterController@show')->name('confirmationMsg');
+Route::get('verify', 'Auth\VerificationController@show');
+Route::post('resend', 'Auth\VerificationController@resend');
