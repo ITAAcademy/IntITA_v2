@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\UserRegistered;
 use App\Helpers\Translate\Translate as t;
 
-use Illuminate\Validation\ValidationException;
-
-
 class RegisterController extends Controller
 {
     /*
