@@ -64956,6 +64956,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['modal_mode', 'login_url', 'register_url', 'id', 'signIn', 'ph_email', 'ph_password', 'login_button', 'registration_button', 'forgot_pass_title', 'registration_title', 'login_title', 'network_title', 'full_registration_title', 'facebook_svg', 'google_svg', 'in_svg', 'twitter_svg'],
@@ -65366,13 +65374,21 @@ var render = function() {
                   "\n                    "
               ),
               _c("div", { staticClass: "networks" }, [
-                _c("img", { attrs: { src: _vm.facebook_svg } }),
+                _c("a", { attrs: { href: "login/facebook" } }, [
+                  _c("img", { attrs: { src: _vm.facebook_svg } })
+                ]),
                 _vm._v(" "),
-                _c("img", { attrs: { src: _vm.google_svg } }),
+                _c("a", { attrs: { href: "login/google" } }, [
+                  _c("img", { attrs: { src: _vm.google_svg } })
+                ]),
                 _vm._v(" "),
-                _c("img", { attrs: { src: _vm.in_svg } }),
+                _c("a", { attrs: { href: "login/linkedin" } }, [
+                  _c("img", { attrs: { src: _vm.in_svg } })
+                ]),
                 _vm._v(" "),
-                _c("img", { attrs: { src: _vm.twitter_svg } })
+                _c("a", { attrs: { href: "login/twitter" } }, [
+                  _c("img", { attrs: { src: _vm.twitter_svg } })
+                ])
               ])
             ])
           ])

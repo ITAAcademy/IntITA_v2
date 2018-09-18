@@ -82,10 +82,18 @@
                     <div class="text-center">
                         {{network_title}}
                         <div class="networks">
-                            <img :src="facebook_svg">
-                            <img :src="google_svg">
-                            <img :src="in_svg">
-                            <img :src="twitter_svg">
+                            <a href="login/facebook">
+                                <img :src="facebook_svg">
+                            </a>
+                            <a href="login/google">
+                                <img :src="google_svg">
+                            </a>
+                            <a href="login/linkedin">
+                                <img :src="in_svg">
+                            </a>
+                            <a href="login/twitter">
+                                <img :src="twitter_svg">
+                            </a>
                         </div>
                     </div>
                 </div>

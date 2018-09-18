@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\Translate\Translate as t;
 use Illuminate\Validation\ValidationException;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -104,6 +106,47 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             $this->username() => [trans(t::value('error', '0273'))],
         ]);
+    }
+
+    /**
+     * Redirect the user to the social authentication page.
+     * @param $provider
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from social.
+     * @param $provider
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback($provider)
+    {
+//        Socialite::driver('google')->stateless()->user();
+        $auth_user = Socialite::driver($provider)->user();
+
+        $user = User::updateOrCreate(
+            [
+                'email' => $auth_user->email
+            ],
+            [
+                'token' => $auth_user->token,
+            ]
+        );
+
+        Auth::login($user, true);
+        return redirect()->to('/'); // Redirect to a secure page
+//        // All Providers
+//        $user->getId();
+//        $user->getNickname();
+//        $user->getName();
+//        $user->getEmail();
+//        $user->getAvatar();
+//
+//         return $user->email;
     }
 
 }
