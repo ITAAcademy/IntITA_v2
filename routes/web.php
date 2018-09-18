@@ -19,6 +19,9 @@ Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');
 Route::get('/', 'HomeController@index');
 Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 
+//information pages
 Route::get('confirmation', 'Auth\RegisterController@show')->name('confirmationMsg');
+Route::get('reset', 'Auth\ForgotPasswordController@show')->name('resetMsg');
+
 Route::get('verify', 'Auth\VerificationController@show');
 Route::post('resend', 'Auth\VerificationController@resend');

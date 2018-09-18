@@ -14,7 +14,6 @@
         <td width="60px;" style="border-color:#ebebeb"></td>
         <td  style="border-color:#ebebeb">
             <br>
-            <span style="color: #7F7F7F; font-family:Arial, sans-serif; font-size: 12px; line-height: 20px; -webkit-text-size-adjust:none; display: block;">{{ t::value('mail', '0836') }}<a href="mailto:{{$user->email}}" target="_blank" style="">{{$user->email}}</a> {{ t::value('mail', '0837') }} {{ url('/') }}</span><br>
             <span style="color: #7F7F7F; font-family:Arial, sans-serif; font-size: 12px; line-height: 10px; -webkit-text-size-adjust:none; display: block;"><i>Copyright © 2016 Intita.{{ t::value('mail', '0838') }}</i></span>
             <br>
         </td>

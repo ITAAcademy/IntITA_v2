@@ -79,16 +79,10 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        try {
-            $this->validator($request->all())->validate();
-            $user = $this->create($request->all());
-            Mail::to($user)->send(new UserRegistered($user));
-            $request->session()->flash('email', $user->email);
-        } catch(\Exception $e) {
-            $result = ['message' => $e->getMessage(), 'errors' => $e->errors()];
-            return response()->json($result, 422);
-        }
-        return response()->json(['message' => 'OK', 'errors' => ''], 200);
+        $this->validator($request->all())->validate();
+        $user = $this->create($request->all());
+        Mail::to($user)->send(new UserRegistered($user));
+        $request->session()->flash('email', $user->email);
     }
 
     public function confirmEmail(Request $request, $token)

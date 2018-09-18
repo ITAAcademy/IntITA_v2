@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,40 +45,36 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
-//    public function render($request, Exception $exception)
-//    {
-//        return parent::render($request, $exception);
-//    }
 
     public function render($request, Exception $e)
     {
-//        // If the request wants JSON (AJAX doesn't always want JSON)
-//        if ($request->wantsJson()) {
-//            // Define the response
-//            $response = [
-//                'errors' => 'Sorry, something went wrong.'
-//            ];
-//
-//            // If the app is in debug mode
-//            if (config('app.debug')) {
-//                // Add the exception class name, message and stack trace to response
-//                $response['exception'] = get_class($e); // Reflection might be better here
-//                $response['message'] = $e->getMessage();
-//                $response['trace'] = $e->getTrace();
-//            }
-//
-//            // Default response of 400
-//            $status = 400;
-//
-//            // If this exception is an instance of HttpException
-//            if ($this->isHttpException($e)) {
-//                // Grab the HTTP status code from the Exception
-//                $status = $e->getStatusCode();
-//            }
-//
-//            // Return a JSON response with the response array and status code
-//            return response()->json($response, $status);
-//        }
+        // If the request wants JSON (AJAX doesn't always want JSON)
+        if ($request->wantsJson()) {
+            // Define the response
+            $response = [
+                'errors' => 'Sorry, something went wrong.'
+            ];
+
+            // If the app is in debug mode
+            if (config('app.debug')) {
+                // Add the exception class name, message and stack trace to response
+                $response['exception'] = get_class($e); // Reflection might be better here
+                $response['message'] = $e->getMessage();
+                $response['trace'] = $e->getTrace();
+            }
+
+            if ($e instanceof ValidationException) {
+                $status = 422;
+                $response = ['message' => 'error', 'errors' => $e->errors()];
+            } elseif ($this->isHttpException($e)) {
+                $status = $e->getStatusCode();
+            } else {
+                $status = $e->getCode() ? $e->getCode() : 500;
+                $response = ['message' => 'error', 'errors' => $e->getMessage()];
+            }
+            // Return a JSON response with the response array and status code
+            return response()->json($response, $status);
+        }
 
         // Default to the parent class' implementation of handler
         return parent::render($request, $e);

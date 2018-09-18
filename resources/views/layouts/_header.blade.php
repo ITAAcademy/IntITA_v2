@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal auth-->
     <auth-form
     :id="'modalAuth'"
     :modal_mode="true"
@@ -78,4 +78,14 @@
     :in_svg="'{!! asset('images/networks/In.svg') !!}'"
     :twitter_svg="'{!! asset('images/networks/Tw.svg') !!}'"
     ></auth-form>
+    <!-- Modal forgot password-->
+    <forgot-password-form
+            :id="'forgotPasswordModal'"
+            :modal_mode="true"
+            :forgot_password_url= "'{!! route('password.email') !!}'"
+            :title="'{!! t::value('forgotpass','0289') !!}'"
+            :description = "'{!! t::value('forgotpass','0290') !!}'"
+            :ph_email="'{!! t::value('regform', '0014') !!}'"
+            :btn_title="'{!! t::value('forgotpass','0291') !!}'"
+    ></forgot-password-form>
 </header>

@@ -54,50 +54,41 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        try {
-            $this->validateLogin($request);
+        $this->validateLogin($request);
 
-            // If the class is using the ThrottlesLogins trait, we can automatically throttle
-            // the login attempts for this application. We'll key this by the username and
-            // the IP address of the client making these requests into this application.
-            if ($this->hasTooManyLoginAttempts($request)) {
-                $this->fireLockoutEvent($request);
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
 
-                return $this->sendLockoutResponse($request);
-            }
-
-            $user = User::where('email', $request->email)->first();
-
-            if ($this->attemptLogin($request)) {
-                $url =  'current';
-                if(!$user->hasVerifiedEmail()) {
-                    $this->guard()->logout();
-                    $request->session()->flash('email', $user->email);
-                    $url = url("/verify");
-                }
-                return response()->json(['url'=>$url], 200);
-            } else {
-                // todo remove after 3-6 month
-                $user = User::where('email', $request->email)->first();
-                if ($user && !$user->password && $user->old_password == sha1($request->password)) {
-                    $user->password = Hash::make($request['password']);
-                    $user->save();
-                    if ($this->attemptLogin($request)) {
-                        return $this->sendLoginResponse($request);
-                    }
-                }
-            }
-
-            // If the login attempt was unsuccessful we will increment the number of attempts
-            // to login and redirect the user back to the login form. Of course, when this
-            // user surpasses their maximum number of attempts they will get locked out.
-            $this->incrementLoginAttempts($request);
-
-            return $this->sendFailedLoginResponse($request);
-        } catch (ValidationException $e) {
-            $result = ['message' => $e->getMessage(), 'errors' => $e->errors()];
-            return response()->json($result, 422);
+            return $this->sendLockoutResponse($request);
         }
+
+        $user = User::where('email', $request->email)->first();
+
+        if ($user && !$user->password && $user->old_password == sha1($request->password)) {
+            $user->password = Hash::make($request['password']);
+            $user->save();
+            if ($this->attemptLogin($request)) {
+                return response()->json(['url'=>'current'], 200);
+            }
+        } else if ($this->attemptLogin($request)) {
+            $url =  'current';
+            if(!$user->hasVerifiedEmail()) {
+                $this->guard()->logout();
+                $request->session()->flash('email', $user->email);
+                $url = url("/verify");
+            }
+            return response()->json(['url'=>$url], 200);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
     }
 
     /**

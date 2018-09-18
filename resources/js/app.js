@@ -20,6 +20,7 @@ Vue.use(BootstrapVue);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('auth-form', require('./components/AuthForm.vue'));
+Vue.component('forgot-password-form', require('./components/ForgotPasswordForm.vue'));
 
 $.ajaxSetup({
     headers: {

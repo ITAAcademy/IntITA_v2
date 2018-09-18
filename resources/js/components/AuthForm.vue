@@ -39,7 +39,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <a onclick="openForgotpass()" href="">{{ forgot_pass_title }}</a>
+                                    <a data-toggle="modal" data-target="#forgotPasswordModal" href="">{{ forgot_pass_title }}</a>
                                 </div>
                                 <div>
                                     <a @click="toggleAuthMode" href="javascript:void(0)">{{ registration_title }}</a>
@@ -131,30 +131,28 @@
                         response.data.url == 'current' ? window.location.reload() : window.location.href = response.data.url;
                     })
                     .catch(function (error) {
-                        if(error.response.status === 422){
-                            that.errors = error.response.data.errors
-                        }else{
-                            alert('Виникла помилка');
-                            console.log(error);
-                        }
+                        that.errorParser(error);
                     });
             },
             register: function () {
                 var that = this;
-                console.log(that.data)
                 axios.post(that.register_url, that.data)
                     .then(function (response) {
                         window.location.href = "confirmation";
                     })
                     .catch(function (error) {
-                        if(error.response.status === 422){
-                            that.errors = error.response.data.errors
-                        }else{
-                            alert('Виникла помилка');
-                            console.log(error);
-                        }
+                        that.errorParser(error);
                     });
             },
+            errorParser: function (error) {
+                var that = this;
+                if(error.response.status === 422){
+                    that.errors = error.response.data.errors
+                }else{
+                    alert('Виникла помилка');
+                    console.log(error);
+                }
+            }
         }
     }
 </script>
