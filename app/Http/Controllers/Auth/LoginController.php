@@ -138,12 +138,10 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-//        Socialite::driver('google')->stateless()->user();
-        $auth_user = Socialite::driver($provider)->user();
-
+        $auth_user = Socialite::driver($provider)->stateless()->user();
         $user = User::updateOrCreate(
             [
-                'email' => $auth_user->email
+                'email' => $auth_user->email,
             ],
             [
                 'token' => $auth_user->token,
@@ -152,14 +150,5 @@ class LoginController extends Controller
 
         Auth::login($user, true);
         return redirect()->to('/'); // Redirect to a secure page
-//        // All Providers
-//        $user->getId();
-//        $user->getNickname();
-//        $user->getName();
-//        $user->getEmail();
-//        $user->getAvatar();
-//
-//         return $user->email;
     }
-
 }

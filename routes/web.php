@@ -29,3 +29,8 @@ Route::post('resend', 'Auth\VerificationController@resend');
 // social networks
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+// banners
+Route::resource('banners', 'BannerController', ['only' => ['index']]);
+// carousel
+Route::resource('carousel', 'CarouselController', ['only' => ['index']]);

@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-md flex-column flex-md-row bd-navbar pl-5 pr-5">
+<header class="navbar navbar-expand-md flex-column flex-md-row bd-navbar pl-5 pr-5 mb-1">
     <a class="navbar-brand" href="{{url('')}}">
         <img src="{{ asset('images/' . t::localeImage('logo_big.svg'))}}" alt="Logo">
     </a>
@@ -58,34 +58,38 @@
     </div>
 
     <!-- Modal auth-->
-    <auth-form
-    :id="'modalAuth'"
-    :modal_mode="true"
-    :login_url = "'{!! route('login') !!}'"
-    :register_url = "'{!! route('register') !!}'"
-    :ph_email="'{!! t::value('regform', '0014') !!}'"
-    :sign-in=true
-    :ph_password="'{!! t::value('regform', '0015') !!}'"
-    :login_button="'{!! t::value('regform', '0093') !!}'"
-    :registration_button="'{!! t::value('regform', '0013') !!}'"
-    :forgot_pass_title="'{!! t::value('regform', '0092') !!}'"
-    :registration_title="'{!! t::value('registration', '0591') !!}'"
-    :full_registration_title="'{!! t::value('regform', '0011') !!}'"
-    :login_title="'{!! t::value('regform', '0806') !!}'"
-    :network_title="'{!! t::value('regform', '0091') !!}'"
-    :facebook_svg="'{!! asset('images/networks/F.svg') !!}'"
-    :google_svg="'{!! asset('images/networks/G+.svg') !!}'"
-    :in_svg="'{!! asset('images/networks/In.svg') !!}'"
-    :twitter_svg="'{!! asset('images/networks/Tw.svg') !!}'"
-    ></auth-form>
+    <div id="auth-modal">
+        <auth-form
+                :id="'modalAuth'"
+                :modal_mode="true"
+                :login_url = "'{!! route('login') !!}'"
+                :register_url = "'{!! route('register') !!}'"
+                :ph_email="'{!! t::value('regform', '0014') !!}'"
+                :sign-in=true
+                :ph_password="'{!! t::value('regform', '0015') !!}'"
+                :login_button="'{!! t::value('regform', '0093') !!}'"
+                :registration_button="'{!! t::value('regform', '0013') !!}'"
+                :forgot_pass_title="'{!! t::value('regform', '0092') !!}'"
+                :registration_title="'{!! t::value('registration', '0591') !!}'"
+                :full_registration_title="'{!! t::value('regform', '0011') !!}'"
+                :login_title="'{!! t::value('regform', '0806') !!}'"
+                :network_title="'{!! t::value('regform', '0091') !!}'"
+                :facebook_svg="'{!! asset('images/networks/F.svg') !!}'"
+                :google_svg="'{!! asset('images/networks/G+.svg') !!}'"
+                :in_svg="'{!! asset('images/networks/In.svg') !!}'"
+                :twitter_svg="'{!! asset('images/networks/Tw.svg') !!}'"
+        ></auth-form>
+    </div>
     <!-- Modal forgot password-->
-    <forgot-password-form
-            :id="'forgotPasswordModal'"
-            :modal_mode="true"
-            :forgot_password_url= "'{!! route('password.email') !!}'"
-            :title="'{!! t::value('forgotpass','0289') !!}'"
-            :description = "'{!! t::value('forgotpass','0290') !!}'"
-            :ph_email="'{!! t::value('regform', '0014') !!}'"
-            :btn_title="'{!! t::value('forgotpass','0291') !!}'"
-    ></forgot-password-form>
+    <div id="auth-forgot-pass">
+        <forgot-password-form
+                :id="'forgotPasswordModal'"
+                :modal_mode="true"
+                :forgot_password_url= "'{!! route('password.email') !!}'"
+                :title="'{!! t::value('forgotpass','0289') !!}'"
+                :description = "'{!! t::value('forgotpass','0290') !!}'"
+                :ph_email="'{!! t::value('regform', '0014') !!}'"
+                :btn_title="'{!! t::value('forgotpass','0291') !!}'"
+        ></forgot-password-form>
+    </div>
 </header>

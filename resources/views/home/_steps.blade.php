@@ -22,5 +22,6 @@
                 </div>
             </div>
         @endforeach
+        <banners :url = "'{!! route('banners.index') !!}'" :banner_path = "'{!! asset('storage') !!}'"></banners>
     </div>
 </div>

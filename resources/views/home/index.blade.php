@@ -1,13 +1,15 @@
 @extends('layouts.app')
-
-<link href="{{ asset('css/home.css') }}" rel="stylesheet">
-
+@section('scripts')
+    <script src="{{ asset('js/home.js') }}" defer></script>
+@stop
+@section('css')
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+@stop
 @section('content')
-    <div class="text-center">
+    <div id="home" class="text-center">
         @include('home._carousel')
         @include('home._about_us')
         @include('home._steps')
-        @include('home._banners')
         @include('home._registration')
     </div>
 @endsection

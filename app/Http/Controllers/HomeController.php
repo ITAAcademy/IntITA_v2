@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Step;
+use App\Models\Step;
 
 class HomeController extends Controller
 {

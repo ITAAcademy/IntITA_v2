@@ -1,0 +1,14 @@
+.main-about-block{
+  background: white;
+  .card{
+    border: none;
+    display: -webkit-box;
+    img{
+      width: auto;
+    }
+    .card-footer {
+      background-color: inherit;
+      border-top: none;
+    }
+  }
+}

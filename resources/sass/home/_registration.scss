@@ -1,0 +1,22 @@
+.reg-form{
+  //padding-bottom: 100px;
+  background: url("/images/form-bg.jpg");
+  background-position: top center;
+  margin-top: 0;
+  .reg-title{
+    font-size: 35px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    line-height: 100%;
+  }
+  .reg-subtitle{
+    font-weight: 300;
+    font-size: 21px;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 35px;
+    color: #ffffff;
+  }
+}

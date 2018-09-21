@@ -11,7 +11,7 @@
                     <div>
                         <div class="form-group">
                             <input type="email" v-model="data.email" :placeholder="ph_email" class="form-control intita-input"
-                                   name="email" required autofocus>
+                                   name="email" required>
                             <div class="text-danger" v-if="errors.email">
                                 {{errors.email[0]}}
                             </div>
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-0 text-center">
-                                <button type="submit" class="btn-auth-form" @click="register()">
+                                <button type="submit" class="btn-auth-form" v-on:click="register()">
                                     {{ registration_button }}
                                 </button>
                             </div>
@@ -133,29 +133,27 @@
                 this.signInMode = !this.signInMode;
             },
             login: function () {
-                var that = this;
-                axios.post(that.login_url, that.data)
-                    .then(function (response) {
+                axios.post(this.login_url, this.data)
+                    .then((response) => {
                         response.data.url == 'current' ? window.location.reload() : window.location.href = response.data.url;
                     })
-                    .catch(function (error) {
-                        that.errorParser(error);
+                    .catch((error) => {
+                        console.log(error)
+                        this.errorParser(error);
                     });
             },
             register: function () {
-                var that = this;
-                axios.post(that.register_url, that.data)
-                    .then(function (response) {
+                axios.post(this.register_url, this.data)
+                    .then((response) => {
                         window.location.href = "confirmation";
                     })
-                    .catch(function (error) {
-                        that.errorParser(error);
+                    .catch((error) => {
+                        this.errorParser(error);
                     });
             },
             errorParser: function (error) {
-                var that = this;
                 if(error.response.status === 422){
-                    that.errors = error.response.data.errors
+                    this.errors = error.response.data.errors
                 }else{
                     alert('Виникла помилка');
                     console.log(error);

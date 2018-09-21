@@ -51,24 +51,21 @@
         },
         methods: {
             send: function () {
-                var that = this;
-
-                axios.post(that.forgot_password_url, that.data)
-                    .then(function (response) {
+                axios.post(this.forgot_password_url, this.data)
+                    .then((response) => {
                         window.location.href = "reset";
                     })
-                    .catch(function (error) {
-                        that.errorParser(error);
+                    .catch((error) => {
+                        this.errorParser(error);
                     });
             },
             errorParser: function (error) {
-                var that =this;
                 if (error.response.status === 422) {
-                    that.errors = error.response.data.errors
-                    that.error = '';
+                    this.errors = error.response.data.errors
+                    this.error = '';
                 } else if (error.response.status === 400) {
-                    that.errors = {};
-                    that.error = error.response.data.errors
+                    this.errors = {};
+                    this.error = error.response.data.errors
                 } else {
                     alert('Виникла помилка');
                     console.log(error);

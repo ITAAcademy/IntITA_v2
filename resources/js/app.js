@@ -18,7 +18,6 @@ Vue.use(BootstrapVue);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('auth-form', require('./components/AuthForm.vue'));
 Vue.component('forgot-password-form', require('./components/ForgotPasswordForm.vue'));
 
@@ -28,6 +27,9 @@ $.ajaxSetup({
     }
 });
 
-const app = new Vue({
-    el: '#app'
+var authModal = new Vue({
+    el: '#auth-modal'
+});
+var authForgot = new Vue({
+    el: '#auth-forgot-pass'
 });

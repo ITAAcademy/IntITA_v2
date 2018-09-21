@@ -1,3 +1,128 @@
+.main-carousel {
+  background: white;
+  position: relative;
+  z-index: -1;
+}
+
+.main-carousel .carousel-btn {
+  width: 160px;
+  position: absolute;
+  text-shadow: 0.1em 0.1em 0.1em black;
+  color: white;
+  font: normal 400 0.54em/2.16em;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  border-top: 0.05em solid #007cbf;
+  background: #4b70a3;
+  border-radius: 0.3em;
+  -webkit-box-shadow: 0em 0.1em 0em black;
+          box-shadow: 0em 0.1em 0em black;
+  z-index: 4;
+  font-size: 20px;
+  margin-left: -80px;
+  padding-top: 4px;
+  margin-top: 30%;
+}
+
+.main-carousel .carousel-btn:hover {
+  border-top-color: #454545;
+  background: #454545;
+  color: #fcfcfc;
+  cursor: pointer;
+}
+
+.main-carousel .carousel-title {
+  position: absolute;
+  line-height: 5%;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  font-size: 66px;
+  text-shadow: 0.05em 0.05em 0.05em #000;
+  margin-bottom: 5vw;
+  margin-top: 10%;
+  width: 100%;
+}
+
+.main-carousel .line {
+  position: absolute;
+  width: 100%;
+}
+
+.main-carousel .line img {
+  position: absolute;
+  display: block;
+  padding: 0 15%;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  margin-top: 25%;
+}
+
+.main-carousel .description {
+  position: absolute;
+  font-size: 28px;
+  width: 100%;
+  font-weight: 200;
+  color: white;
+  text-shadow: 2px 2px 1px #000000;
+  text-align: center;
+  z-index: 1;
+  top: 44%;
+}
+
+.main-carousel .swiper-pagination-fraction,
+.main-carousel .swiper-pagination-custom,
+.main-carousel .swiper-container-horizontal > .swiper-pagination-bullets {
+  top: 0;
+  text-align: left;
+  left: 5%;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.main-carousel .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  margin: 4px;
+  filter: Alpha(Opacity=50);
+  opacity: 0.5;
+  border-radius: 0.4em;
+  background: #869791;
+}
+
+.main-carousel .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.main-carousel .swiper-pagination-bullet:hover {
+  opacity: 1;
+}
+
+.main-carousel img.mouse {
+  width: 100%;
+  margin-top: -20px;
+  z-index: 1;
+  position: relative;
+}
+
+.main-about-block {
+  background: white;
+}
+
+.main-about-block .card {
+  border: none;
+  display: -webkit-box;
+}
+
+.main-about-block .card img {
+  width: auto;
+}
+
+.main-about-block .card .card-footer {
+  background-color: inherit;
+  border-top: none;
+}
+
 .steps {
   background: #f3f3f3;
 }
@@ -187,5 +312,29 @@
   .steps .step:nth-child(even) .step-image .step-article {
     left: 90px;
   }
+}
+
+.reg-form {
+  background: url("/images/form-bg.jpg");
+  background-position: top center;
+  margin-top: 0;
+}
+
+.reg-form .reg-title {
+  font-size: 35px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  line-height: 100%;
+}
+
+.reg-form .reg-subtitle {
+  font-weight: 300;
+  font-size: 21px;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 35px;
+  color: #ffffff;
 }
 
